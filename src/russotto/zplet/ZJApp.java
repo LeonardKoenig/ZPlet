@@ -16,7 +16,7 @@ import russotto.zplet.zmachine.zmachine3.ZMachine3;
 import russotto.zplet.zmachine.zmachine5.ZMachine5;
 import russotto.zplet.zmachine.zmachine5.ZMachine8;
 
-public class ZJApp extends Frame {
+public class ZJApp extends Frame implements ZController {
 		ZScreen screen;
 		ZStatus status_line;
 		ZMachine zm;
@@ -206,6 +206,16 @@ public class ZJApp extends Frame {
 				remove(screen);
 				screen = null;
 		}
+
+        /* JavaDoc copies comments from ZControler interface to here. */
+        public boolean
+        playSound( int snd_id )
+        {
+            /* TODO: Map snd_id to URL. */
+            URL sound_file;
+
+            /* TODO: Play URL. */
+        }
 
 }
 
