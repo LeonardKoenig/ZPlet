@@ -52,9 +52,12 @@
   </target>
 
   <target name="srcdist" depends="init">
-      <zip zipfile="${dist}/${ant.project.name}-src.zip"
+      <zip zipfile="${dist}/${ant.project.name}-${DSTAMP}-src.zip"
            compress="${zip.compression}">
         <fileset refid="dist.include"/>
       </zip>
+  </target>
+
+  <target name="alldist" depends="dist,srcdist">
   </target>
 </project>
