@@ -39,6 +39,7 @@ public abstract class ZMachine extends Thread {
 	protected ZInstruction zi;
 	protected boolean status_redirect;
 	protected String status_location;
+	private ZController my_zcontroller;
 
 	protected final String A2 = "0123456789.,!?_#\'\"/\\-:()";
 
@@ -61,6 +62,43 @@ public abstract class ZMachine extends Thread {
 				outputs[1] = true;
 				alphabet = 0;
 	}
+
+    /**
+     * Contructs a new ZMachine.
+     * @param screen the ZScreen for this ZMachine.
+     * @param status_line the ZStatus for this ZMachine.
+     * @param memory_image a byte array to be used for a memory image.
+     * @param controller the ZController to use if needed.
+     */
+	public
+    ZMachine( ZScreen screen,
+              ZStatus status_line,
+              byte[] memory_image,
+              ZController controller )
+    {
+        this (screen, status_line, memory_image);
+        setController (controller);
+    }
+
+    /**
+     * Sets the controller of this ZMachine.
+     * @param controller the ZController to use.
+     */
+    public void
+    setController( ZController controller )
+    {
+        my_zcontroller = controller;
+    }
+
+    /**
+     * Gets the controller for this ZMachine.
+     * @return the ZController for this ZMachine.
+     */
+    public ZController
+    getController( )
+    {
+        return my_zcontroller;
+    }
 
 	public abstract void update_status_line();
 
