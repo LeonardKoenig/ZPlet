@@ -1215,8 +1215,17 @@ public class ZInstruction {
 
 	protected short op_sound_effect()
 	{
-				/* TODO */
-				return ZNOTDONE;
+                ZController zc = zm.getController();
+                if (zc != null)
+                {
+                    return ( (zc.playSound (operands)) ? ZTRUE : ZFALSE );
+                }
+                else
+                {
+                    /* the ZMachine didn't get passed a useable controller. So
+                     * we'll assume it has not been implemented. */
+                    return ZNOTDONE;
+                }
 	}
 
 	protected void setupbs() {
