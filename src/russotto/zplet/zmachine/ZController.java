@@ -28,10 +28,10 @@ public interface ZController
  * Where game_name is the first 6 characters of the current games file name and
  * XX is a two digit number ranging from 03 - 99.
  *
- * @param snd_id The sound id number to be play.
+ * @param oparands The arguments to the sound_effect op code.
  * @return True if sound is now playing. False if the sound could not be played.
  */
 public boolean
-playSound( int snd_id );
+playSound( short[] oparands );
 
 }
