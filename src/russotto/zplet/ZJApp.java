@@ -210,12 +210,14 @@ public class ZJApp extends Frame implements ZController {
 
         /* JavaDoc copies comments from ZControler interface to here. */
         public boolean
-        playSound( int snd_id )
+        playSound( short[] operands )
         {
             /* TODO: Map snd_id to URL. */
             URL sound_file;
 
             /* TODO: Play URL. */
+
+            return false;
         }
 
 }

@@ -159,7 +159,7 @@ public class Zplet extends java.applet.Applet implements ZController {
 
         /* JavaDoc copies comments from ZControler interface to here. */
         public boolean
-        playSound( int snd_id )
+        playSound( short[] operands )
         {
             /* TODO: Map snd_id to URL. */
             URL sound_file;
