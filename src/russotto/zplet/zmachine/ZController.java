@@ -20,13 +20,24 @@ public interface ZController
 {
 
 /**
- * Plays a sound. An id of 1 will play a low beep ans an id of 2 will play a
+ * Plays a sound. An id of 1 will play a low beep and an id of 2 will play a
  * high beep. Any other id will coraspond to a custom sound id. The mapping of
  * sound file to sound id is the implementor's responsability. Although the
  * defacto standard is to place your sounds in a directory called SOUNDS in
  * which is your files with the following name convention: [game_name][XX].snd
  * Where game_name is the first 6 characters of the current games file name and
- * XX is a two digit number ranging from 03 - 99.
+ * XX is a two digit number ranging from 03 - 99. <p />
+ *
+ * The operands passed in has the following format where all but the first one
+ * are optional. [This info is not concrete. I belive them to be misleading.]
+ * <table>
+ *   <tr><th> Index </th><th> Purpose </th></tr>
+ *   <tr><td>  [0]  </td><td> Sound index (0-99) </td></tr>
+ *   <tr><td>  [1]  </td><td> number </td></tr>
+ *   <tr><td>  [2]  </td><td> effect </td></tr>
+ *   <tr><td>  [3]  </td><td> volume </td></tr>
+ *   <tr><td>  [4]  </td><td> routine </td></tr>
+ * </table>
  *
  * @param oparands The arguments to the sound_effect op code.
  * @return True if sound is now playing. False if the sound could not be played.
