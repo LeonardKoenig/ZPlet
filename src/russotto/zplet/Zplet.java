@@ -165,5 +165,7 @@ public class Zplet extends java.applet.Applet implements ZController {
             URL sound_file;
 
             /* TODO: Play URL. */
+
+            return false;
         }
 }

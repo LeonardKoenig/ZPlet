@@ -11,6 +11,7 @@ import java.net.*;
 import java.io.*;
 import russotto.zplet.screenmodel.ZStatus;
 import russotto.zplet.screenmodel.ZScreen;
+import russotto.zplet.zmachine.ZController;
 import russotto.zplet.zmachine.ZMachine;
 import russotto.zplet.zmachine.zmachine3.ZMachine3;
 import russotto.zplet.zmachine.zmachine5.ZMachine5;
