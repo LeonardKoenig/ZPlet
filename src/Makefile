@@ -2,7 +2,6 @@
 
 zplet:
 	javac $(JCFLAGS) -sourcepath $(PWD) -d ../classes russotto/zplet/Zplet.java
-	touch $(HOME)/public_html/zplet/*.html
 
 zjapp:
 	javac $(JCFLAGS) -sourcepath $(PWD) -d ../classes russotto/zplet/ZJApp.java
