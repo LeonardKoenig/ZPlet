@@ -1,16 +1,18 @@
 <?xml version="1.0"?>
 
+<!-- You can download Ant from http://jakarta.apache.org/ -->
+
 <!-- A note to Kaffe users:
   You must have a copy of Sun's tools.jar because Kaffe's tools.jar is not Ant
-  compatable. Also Kaffe's compression classes have a bug so you need setting
-  zip compression to "no". -->
+  compatable. Also Kaffe's compression classes have a bug so zip compression
+  needs to be turned off. -->
 
 <project name="ZPlet" basedir="." default="compile">
   <!-- set global properties for this build -->
   <property name="src" value="src"/>
   <property name="build" value="classes"/>
   <property name="dist"  value="dist"/>
-  <property name="zip.compression" value="yes"/>
+  <property name="zip.compression" value="true"/>
 
   <!-- Define what files and directories to include in a srcdist build -->
   <fileset id="dist.include" dir="${basedir}">
@@ -21,6 +23,9 @@
   </fileset>
 
   <target name="init">
+    <!-- Set zip.compression tests for Kaffe. -->
+    <available property="zip.compression" value="false"
+               classname="kaffe.lang.Application"/>
     <!-- Create the time stamp -->
     <tstamp/>
     <!-- Create the build directory structure used by compile -->
