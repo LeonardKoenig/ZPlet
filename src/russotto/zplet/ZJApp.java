@@ -31,6 +31,8 @@ public class ZJApp extends Frame {
 				int i;
 				ZJApp myz;
 
+				/* TODO: Include support to set custom fonts and sizes.
+				 * See ZScreen.setFixedFont() */
 				for (i = 0; i < argv.length; i++) {
 						if (argv[i].charAt(0) == '-') {
 								switch (argv[i].charAt(1)) {

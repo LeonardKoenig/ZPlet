@@ -30,6 +30,8 @@ public class ZScreen extends Canvas {
 		Graphics g_store;
 		Color zbcolor;
 		boolean hasscrolled = false;
+		public final static String DEFAULT_FONT_FAMILY = "Courier";
+		public final static int DEFAULT_FONT_SIZE = 12;
 		final static char accent_table[] = {
 			 	'\u00e4',			/* a-umlaut */
 			 	'\u00f6',			/* o-umlaut */
@@ -104,9 +106,13 @@ public class ZScreen extends Canvas {
 
 
 		public ZScreen() {
+		    this (DEFAULT_FONT_FAMILY, DEFAULT_FONT_SIZE);
+		}
+
+		public ZScreen( String font_family, int font_size ) {
 				Dimension mysize = size();
 				
-				fixedfont = new Font("Courier", Font.PLAIN, 12);
+				this.setFixedFont (font_family, font_size);
 				fixedmetrics = getFontMetrics(fixedfont);
 				chars = mysize.width / fixedmetrics.charWidth(' ');
 				lines = mysize.height / fixedmetrics.getHeight();
@@ -340,6 +346,36 @@ public class ZScreen extends Canvas {
 		
 		public int charwidth() { /* character width of the fixed font */
 				return fixedmetrics.charWidth(' ');
+		}
+
+		/**
+		 * Set the main font for the game.
+		 * The Font Family can be any legal font name. However use of a
+		 * non-fixed width font could cause many unexpected problems.
+		 * Use at your own risk. Setting font_size to zero or below
+		 * will set the size to DEFAULT_FONT_SIZE.
+		 *
+		 * @param font_family   a Font Family sting (i.e. "Courier").
+		 * @param font_size     the point size of the font (int).
+		 */ 
+		public synchronized void
+		setFixedFont( String font_family, int font_size )
+		{
+		    if (font_size <= 0)
+		    {
+			font_size = this.DEFAULT_FONT_SIZE;
+		    }
+		    this.fixedfont = new Font(font_family, Font.PLAIN, font_size);
+		}
+
+		/**
+		 * Get the main font for the game.
+		 * @return  a java.awt.Font object.
+		 */
+		public synchronized Font
+		getFixedFont( )
+		{
+		    return this.fixedfont;
 		}
 
 		public synchronized void settext(int y, int x, char newtext[],

@@ -25,15 +25,37 @@ public class Zplet extends java.applet.Applet {
 		
 		public void init() {
 			String statusfg, statusbg, mainfg, mainbg;
+			String font_family, font_size;
 			Component parent;
 			
 			statusfg = getParameter("StatusForeground");
 			statusbg = getParameter("StatusBackground");
 			mainfg = getParameter("Foreground");
 			mainbg = getParameter("Background");
+			font_family = getParameter ("FontFamily");
+			font_size = getParameter ("FontSize");
+			if (font_family == null)
+			{
+			    font_family = ZScreen.DEFAULT_FONT_FAMILY;
+			}
 			setLayout(new BorderLayout());
 			screen = new ZScreen();
 			status_line = new ZStatus();
+			/* Setting an int from a string can be problematic.
+			 * So encapsulate in a try/catch block.
+			 * All errors are ignored and default size is used. */
+			try
+			{
+			    if (font_size == null)
+			    {
+				throw new NumberFormatException();
+			    }
+			    screen.setFixedFont (font_family, Integer.valueOf (font_size));
+			}
+			catch (NumberFormatException e)
+			{
+			    screen.setFixedFont (font_family, ZScreen.DEFAULT_FONT_SIZE);
+			}
 			status_line.setForeground(Color.black);
 			status_line.setBackground(Color.white);
 			screen.setZForeground(ZColor.Z_WHITE);
